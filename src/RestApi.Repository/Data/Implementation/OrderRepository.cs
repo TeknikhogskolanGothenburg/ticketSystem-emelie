@@ -4,11 +4,17 @@ using System.Linq;
 
 namespace RestApi.Repository
 {
-    class OrderRepository : IOrderRepository
+    public class OrderRepository : IOrderRepository
     {
         private DataBaseContext _context;
 
         public OrderRepository(DataBaseContext context) => _context = context;
+
+        public void CreateOrder(Order order)
+        {
+            _context.Orders.Add(order);
+            _context.SaveChanges();
+        }
 
         public Order GetOrderById(int id) => _context.Orders.FirstOrDefault(o => o.Id == id);
 

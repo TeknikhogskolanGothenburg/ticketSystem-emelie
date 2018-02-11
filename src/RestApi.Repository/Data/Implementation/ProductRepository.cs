@@ -5,13 +5,17 @@ using System.Linq;
 
 namespace RestApi.Repository
 {
-    class ProductRepository : IProductRepository
+    public class ProductRepository : IProductRepository
     {
         private DataBaseContext _context;
 
         public ProductRepository(DataBaseContext context) => _context = context;
 
-        public void CreateProduct(Product product) => _context.Products.Add(product);
+        public void CreateProduct(Product product)
+        {
+            _context.Products.Add(product);
+            _context.SaveChanges();
+        }
 
         public void DeleteProduct(Product product) => _context.Products.Remove(product);
 

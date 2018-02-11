@@ -5,11 +5,11 @@ namespace RestApi.Repository
 {
     public interface IOrderRepository
     {
-        
-        Order GetOrderById(int id);
-        Order GetOrderByCustomerId(int id);
+        void CreateOrder(Order order);
         void DeleteOrder(Order order);
         void UpdateOrder(Order order);
+        Order GetOrderById(int id);
+        Order GetOrderByCustomerId(int id);
         List<Order> GetAllOrders();
     }
 }

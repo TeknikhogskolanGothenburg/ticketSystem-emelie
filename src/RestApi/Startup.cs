@@ -23,6 +23,8 @@ namespace RestApi.Host
         {
             services.AddDbContext<DataBaseContext>(options => options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Database=RESTAPI.DataBaseContext;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False", b => b.MigrationsAssembly("RESTAPI")));
             services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddMvc();
         }
 

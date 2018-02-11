@@ -43,7 +43,7 @@ namespace RestApi.Controllers
         }
 
         // PUT api/values/5
-        [HttpPut())]
+        [HttpPut()]
         public void Put([FromBody]Customer customer)
         {
             _customerRepository.UpdateCustomer(customer);
