@@ -9,13 +9,13 @@ namespace RestApi.Repository
     {
         private DataBaseContext _context;
 
-        public ProductRepository(DataBaseContext context) => _context = context;
+        //public ProductRepository(DataBaseContext context) => _context = context;
 
-        public void CreateProduct(Product product)
-        {
-            _context.Products.Add(product);
-            _context.SaveChanges();
-        }
+        //public void CreateProduct(Product product)
+        //{
+        //    _context.Products.Add(product);
+        //    _context.SaveChanges();
+        //}
 
         public void DeleteProduct(Product product) => _context.Products.Remove(product);
 

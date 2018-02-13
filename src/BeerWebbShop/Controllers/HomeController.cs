@@ -17,34 +17,35 @@ namespace BeerWebbShop.Controllers
 
         public IActionResult Beer()
         {
-            ViewData["Message"] = "Your application description page.";
+           
 
             return View();
         }
 
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Your contact page.";
+          
 
             return View();
         }
 
         public IActionResult Cart()
         {
-            ViewData["Message"] = "Your cart";
+
+            return View();
+        }
+
+        public IActionResult Login()
+        {
 
             return View();
         }
 
         public IActionResult ConfirmOrder()
         {
-            ViewData["Message"] = "confirm order";
 
             return View();
         }
-
-
-
 
         public IActionResult Error()
         {
