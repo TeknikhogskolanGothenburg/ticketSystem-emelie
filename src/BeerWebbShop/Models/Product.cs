@@ -8,11 +8,7 @@ namespace BeerWebbShop.Models
 {
     public class Product
     {
-   
-        public int Id { get; set; }
-
-        public int OrderId { get; set; }
-
+  
         [Required]
         [StringLength(20,ErrorMessage = "Product name must be shorter than 20 character")]
         public string ProductName { get; set; }

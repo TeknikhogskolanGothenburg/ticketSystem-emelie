@@ -28,7 +28,7 @@ namespace RestApi.Repository.Data.Implementation
         public User GetUserByEmail(string Email) => _context.Users.FirstOrDefault(u => u.Email == Email);
        
 
-        public User GetUserrById(int id) => _context.Users.FirstOrDefault(u => u.Id == id);
+        public User GetUserById(int id) => _context.Users.FirstOrDefault(u => u.Id == id);
 
 
         public void UpdateUser(User user) => _context.Users.Update(user);
