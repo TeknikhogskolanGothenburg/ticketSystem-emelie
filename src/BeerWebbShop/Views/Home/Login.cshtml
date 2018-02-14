@@ -1,4 +1,7 @@
-﻿@using (Html.BeginForm("Index","Home",FormMethod.Post))
+﻿@model User
+
+@using (Html.BeginForm("UserPage", "Home", FormMethod.Post))
+
 {
 <form>
     <br><br><br>
@@ -10,14 +13,11 @@
         <label for="psw"><b>Password</b></label><br>
         <input type="password" placeholder="Enter Password" name="psw" required><br>
 
-        <button type="submit">Login</button>
+        <button type="submit">Sign in</button>
         <label>
             <input type="checkbox" checked="checked" name="remember"> Remember me
         </label>
     </div>
-
-    <div class="login" style="background-color:#f1f1f1">
-        <span class="psw">Forgot <a href="#">password?</a></span>
-    </div>
 </form>
 }
+

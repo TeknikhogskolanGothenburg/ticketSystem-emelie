@@ -18,7 +18,6 @@ namespace BeerWebbShop.Controllers
         public IActionResult Beer()
         {
            
-
             return View();
         }
 
@@ -46,6 +45,29 @@ namespace BeerWebbShop.Controllers
 
             return View();
         }
+
+        public IActionResult UserPage()
+        {
+
+            return View();
+        }
+
+
+        public IActionResult CreateUser()
+        {
+
+            return View();
+        }
+
+        public IActionResult ChangePassword()
+        {
+
+            return View();
+        }
+
+
+
+
 
         public IActionResult Error()
         {

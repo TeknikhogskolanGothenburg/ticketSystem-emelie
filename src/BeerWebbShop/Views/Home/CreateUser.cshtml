@@ -1,0 +1,35 @@
+﻿@model User
+
+<legend>
+    Fill in the details below to create a user
+</legend>
+
+<div class="addUser">
+    <br><br><br>
+    <label for="userid">User Id</label><br>
+    <input type="text" name="userid"><br><br>
+
+    <label for="firstname">FirstName</label><br>
+    <input type="text" name="firstname"><br><br>
+
+    <label for="lastname">Lastname</label><br>
+    <input type="text" name="lastname"><br><br>
+
+    <label for="username">Username</label><br>
+    <input type="text" name="username"><br><br>
+
+    <label for="password">Password</label><br>
+    <input type="text" name="city"><br><br>
+</div>
+
+<button type="submit">Add user </button>
+
+
+@using (Html.BeginForm("UserPage", "Home", FormMethod.Post))
+{
+    <br> <br> <br>
+    <button type="submit">Back</button>
+
+}
+
+
