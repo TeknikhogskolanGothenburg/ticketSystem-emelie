@@ -1,4 +1,4 @@
-﻿@model User
+﻿@model BeerWebbShop.Models.User
 
 @using (Html.BeginForm("UserPage", "Home", FormMethod.Post))
 
@@ -6,14 +6,14 @@
     <form>
         <br><br><br>
         <div class="login">
-            <label for="uname"><b>Username</b></label> <br>
-            <input type="text" placeholder="Enter Username" name="uname" required> <br>
+            <label for="UserName"><b>Username</b></label> <br>
+            <input type="text" placeholder="Enter Username" name="UserName"> <br>
 
 
-            <label for="psw"><b>Password</b></label><br>
-            <input type="password" placeholder="Enter Password" name="psw" required><br>
+            <label for="PassWord"><b>Password</b></label><br>
+            <input type="password" placeholder="Enter Password" name="PassWord"><br>
 
-            <button type="submit">Sign in</button>
+            <input type="submit" value="Sign in" />
             <label>
                 <input type="checkbox" checked="checked" name="remember"> Remember me
             </label>
@@ -21,4 +21,3 @@
     </form>
 }
 
-l

@@ -8,16 +8,23 @@ namespace BeerWebbShop.Models
 {
     public class Product
     {
-  
-        [Required]
-        [StringLength(20,ErrorMessage = "Product name must be shorter than 20 character")]
         public string ProductName { get; set; }
 
-      
         public string Description { get; set; }
 
-        [Required]
         public int Price { get; set; }
 
+        public string ImageName;
+
+        public string ImageUrl
+        {
+            get
+            {
+                return "/images/Product/" + ImageName;
+            }
+
+        }
+
+       
     }
 }

@@ -54,7 +54,7 @@ namespace RestApi.Controllers
         [HttpDelete()]
         public void Delete(User user)
         {
-            _userRepository.DelteUser(User);
+            _userRepository.DeleteUser(user);
         }
     }
 }

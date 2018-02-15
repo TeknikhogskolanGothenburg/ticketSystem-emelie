@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using BeerWebbShop.Models;
 
+
 namespace BeerWebbShop.Controllers
 {
     public class HomeController : Controller
@@ -17,8 +18,13 @@ namespace BeerWebbShop.Controllers
 
         public IActionResult Beer()
         {
-           
-            return View();
+            List<Product> product = new List<Product>();
+
+            for (int i = 10; i < 30; i++)
+            {
+                product.Add(new Product {ProductName = "Sour Beer" , Price = 32 , Description = "Sour beer with taste of lemon,strawberry and melon", ImageName="beer8.jpg"});
+            }
+            return View(product);
         }
 
         public IActionResult Contact()
@@ -46,7 +52,7 @@ namespace BeerWebbShop.Controllers
             return View();
         }
 
-        public IActionResult UserPage()
+        public IActionResult UserPage(string UserName, string PassWord)
         {
 
             return View();
@@ -55,7 +61,7 @@ namespace BeerWebbShop.Controllers
 
         public IActionResult CreateUser()
         {
-
+            
             return View();
         }
 
@@ -65,7 +71,8 @@ namespace BeerWebbShop.Controllers
             return View();
         }
 
-
+     
+      
 
 
 
