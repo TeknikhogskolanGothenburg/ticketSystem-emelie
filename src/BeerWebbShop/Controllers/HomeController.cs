@@ -52,11 +52,6 @@ namespace BeerWebbShop.Controllers
             return View();
         }
 
-        public IActionResult UserPage(string UserName, string PassWord)
-        {
-
-            return View();
-        }
 
 
         public IActionResult CreateUser()

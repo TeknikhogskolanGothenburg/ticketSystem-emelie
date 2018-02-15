@@ -1,11 +1,11 @@
 ﻿using RestApi.Model;
-using RestApi.Repository.Interface;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace RestApi.Repository.Data.Implementation
+namespace RestApi.Repository
 {
     public class UserRepository : IUserRepository
     {
@@ -23,7 +23,11 @@ namespace RestApi.Repository.Data.Implementation
 
 
         public List<User> GetAllUser() => _context.Users.OrderBy(u => u.FirstName).ToList();
-      
+
+        public User GetByUsernameAndPassword(string username, string password)
+        {
+            return _context.Users.Where(x => x.UserName == username && x.PassWord == password).FirstOrDefault();
+        }
 
         public User GetUserByEmail(string Email) => _context.Users.FirstOrDefault(u => u.Email == Email);
        

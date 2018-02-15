@@ -13,5 +13,6 @@ namespace RestApi.Repository
         User GetUserById(int id);
         User GetUserByEmail(string Email);
         List<User> GetAllUser();
+        User GetByUsernameAndPassword(string username, string password);
     }
 }

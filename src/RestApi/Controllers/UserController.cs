@@ -33,6 +33,18 @@ namespace RestApi.Controllers
             return _userRepository.GetUserById(id);
         }
 
+        [HttpGet("/GetByUser")]
+        public IActionResult GetByUser([FromBody] string username, [FromBody] string password)
+        {
+            var user = _userRepository.GetByUsernameAndPassword(username, password);
+
+            if (user != null)
+            {
+                return Ok();
+            }
+            return NotFound();
+        }
+
         // POST api/values
         [HttpPost]
         public IActionResult Post([FromBody] User user)

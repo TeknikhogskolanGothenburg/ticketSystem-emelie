@@ -12,6 +12,8 @@ namespace BeerWebbShop.Services
     {
         private const string Addcustomer = "api/Customer/";
 
+        private const string ValidateUser = "api/User/";
+
         public async Task<HttpResponseMessage> AddCustomerCall(Customer customer)
         {
             using (var client = new HttpClient())
@@ -27,10 +29,25 @@ namespace BeerWebbShop.Services
 
                 return null;
             }
-              
-            
-
-            
         }
+
+        public async Task<HttpResponseMessage> ValidateUserCall(string username, string password )
+        {
+
+            using (var client = new HttpClient())
+            {
+               
+                var result = await client.PostAsync(new Uri("http://localhost:58585/" + ValidateUser), content);
+
+                if (result.IsSuccessStatusCode)
+                {
+                    return result;
+                }
+
+                return null;
+            }
+        }
+
+        
     }
 }

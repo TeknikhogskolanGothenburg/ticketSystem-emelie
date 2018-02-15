@@ -10,13 +10,24 @@ using BeerWebbShop.Models;
 
 namespace BeerWebbShop.Controllers
 {
-    public class AdministatorController : Controller
+    public class AdministratorController : Controller
     {
         // GET: /<controller>/
         public IActionResult Index()
         {
             return View();
         }
+
+
+
+
+        public IActionResult UserPage(string UserName, string PassWord)
+        {
+
+            return View();
+        }
+
+
 
         [HttpPost]
         [AutoValidateAntiforgeryToken]
