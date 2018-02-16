@@ -1,0 +1,28 @@
+﻿@model BeerWebbShop.Models.Customer
+
+<div id="order">
+
+    <div id="header">
+        <center><h1>You can search order with firstname,lastname or Email</h1></center> <br><br>
+    </div>
+    <div id="form">
+        <input type="text" placeholder="Firstname" name="FirstName" /> <br><br>
+        <input type="text" placeholder="Lastname" name="LastName" /> <br><br>
+        <input type="email" placeholder="Email" name="Email" /> <br><br>
+    </div>
+</div>
+
+
+@using (Html.BeginForm("UserPage", "Administrator", FormMethod.Post))
+{
+    <br>
+    <button type="submit">Search order</button>
+ }
+
+
+ @using (Html.BeginForm("UserPage", "Administrator", FormMethod.Post))
+ {
+    <br>
+    <button type="submit">Back</button>
+
+ }

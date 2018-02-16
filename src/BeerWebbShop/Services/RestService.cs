@@ -31,23 +31,23 @@ namespace BeerWebbShop.Services
             }
         }
 
-        public async Task<HttpResponseMessage> ValidateUserCall(string username, string password )
-        {
+        //public async Task<HttpResponseMessage> ValidateUserCall(string username, string password)
+        //{
 
-            using (var client = new HttpClient())
-            {
-               
-                var result = await client.PostAsync(new Uri("http://localhost:58585/" + ValidateUser), content);
+        //    using (var client = new HttpClient())
+        //    {
 
-                if (result.IsSuccessStatusCode)
-                {
-                    return result;
-                }
+        //        var result = await client.PostAsync(new Uri("http://localhost:58585/" + ValidateUser), /*content*/);
 
-                return null;
-            }
-        }
+        //        if (result.IsSuccessStatusCode)
+        //        {
+        //            return result;
+        //        }
 
-        
+        //        return null;
+        //    }
+        //}
+
+
     }
 }

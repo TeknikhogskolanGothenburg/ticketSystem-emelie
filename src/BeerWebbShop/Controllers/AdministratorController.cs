@@ -1,24 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using BeerWebbShop.Models;
 
 
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace BeerWebbShop.Controllers
 {
     public class AdministratorController : Controller
     {
-        // GET: /<controller>/
-        public IActionResult Index()
+        public IActionResult SearchOrder()
         {
+
+            return View();
+        }
+
+        public IActionResult AddProduct()
+        {
+
             return View();
         }
 
 
+        public IActionResult ChangePassword()
+        {
+
+            return View();
+        }
+
+
+        public IActionResult CreateUser()
+        {
+
+            return View();
+        }
 
 
         public IActionResult UserPage(string UserName, string PassWord)
@@ -29,18 +46,18 @@ namespace BeerWebbShop.Controllers
 
 
 
-        [HttpPost]
-        [AutoValidateAntiforgeryToken]
-        public IActionResult Create(Product product)
-        {
-            //Service webshop 
-            //calculate the best price in shop 
-            //Add the sheepest beer
+        //[HttpPost]
+        //[AutoValidateAntiforgeryToken]
+        //public IActionResult Create(Product product)
+        //{
+        //    //Service webshop 
+        //    //calculate the best price in shop 
+        //    //Add the sheepest beer
 
-            //RestService, AddProduckt();
+        //    //RestService, AddProduckt();
 
-            return View();
-        }
+        //    return View();
+        //}
     }
 
 }
