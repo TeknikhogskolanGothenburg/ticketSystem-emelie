@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using BeerWebbShop.Models;
 using BeerWebbShop.Services;
+using System.Net;
 
 namespace BeerWebbShop.Controllers
 {
@@ -43,6 +40,19 @@ namespace BeerWebbShop.Controllers
         }
 
 
+        public IActionResult ValidateUser(User user)
+
+        {
+            var result = restService.GetByUsernameAndPassword(user);
+          
+            if (result.Result.StatusCode == HttpStatusCode.OK)
+            {
+                return View("UserPage");
+            }
+
+            return RedirectToAction("Login","Home");
+        }
+
         public IActionResult ChangePassword()
         {
             return View();
@@ -59,8 +69,7 @@ namespace BeerWebbShop.Controllers
             }
             return View();
             
-        }         
-                
+        }
 
 
         public IActionResult UserPage(string UserName, string PassWord)

@@ -26,7 +26,7 @@ namespace RestApi.Repository
 
         public User GetByUsernameAndPassword(string username, string password)
         {
-            return _context.Users.Where(x => x.UserName == username && x.PassWord == password).FirstOrDefault();
+            return _context.Users.Where(u => u.UserName == username && u.PassWord == password).FirstOrDefault();
         }
 
         public User GetUserByEmail(string Email) => _context.Users.FirstOrDefault(u => u.Email == Email);

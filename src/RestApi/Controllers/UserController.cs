@@ -35,12 +35,15 @@ namespace RestApi.Controllers
             return _userRepository.GetUserById(id);
         }
 
-        [HttpGet("/GetByUser")]
-        public IActionResult GetByUser([FromBody] string username, [FromBody] string password)
+        [HttpPost("ValidateUser")]
+        public IActionResult ValidateUser([FromBody] UserDto user)
         {
-            var user = _userRepository.GetByUsernameAndPassword(username, password);
+            var userMapper = new Mapper();
+            var mappedUser = userMapper.UserMap(user);
 
-            if (user != null)
+            var result = _userRepository.GetByUsernameAndPassword(user.UserName, user.PassWord);
+
+            if (result != null)
             {
                 return Ok();
             }

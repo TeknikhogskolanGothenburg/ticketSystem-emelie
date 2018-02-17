@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Net.Http;
 using Newtonsoft.Json;
 using RestSharp;
+using Newtonsoft.Json.Linq;
 
 namespace BeerWebbShop.Services
 {
@@ -17,7 +18,9 @@ namespace BeerWebbShop.Services
 
         private const string User = "api/User";
 
-        private const string String = "api/string";
+        
+
+       
        
 
         public async Task<Product> AddProduct(Product product)
@@ -57,13 +60,13 @@ namespace BeerWebbShop.Services
         }
 
 
-        public async Task<string> GetByUser(string username,string password)
+        public async Task<RestResponse> GetByUsernameAndPassword(User user)
         {
             var client = new RestClient(new Uri("http://localhost:50987/" + User));
-            var request = new RestRequest("GetByUser", Method.GET);
+            var request = new RestRequest("ValidateUser", Method.POST);
             request.AddHeader("Accept", "application/json");
 
-            var jsonObject = JsonConvert.SerializeObject(String);
+            var jsonObject = JsonConvert.SerializeObject(user);
             request.AddParameter("application/json", jsonObject, ParameterType.RequestBody);
 
             var taskCompletion = new TaskCompletionSource<IRestResponse>();
@@ -72,12 +75,7 @@ namespace BeerWebbShop.Services
 
             var response = (RestResponse)(await taskCompletion.Task);
 
-            return JsonConvert.DeserializeObject<string>(response.Content);
-
-
-
-
-
+            return response;
 
         }
         
