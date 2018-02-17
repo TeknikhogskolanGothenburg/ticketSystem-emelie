@@ -17,6 +17,8 @@ namespace BeerWebbShop.Services
 
         private const string User = "api/User";
 
+        private const string String = "api/string";
+       
 
         public async Task<Product> AddProduct(Product product)
         {
@@ -53,6 +55,37 @@ namespace BeerWebbShop.Services
 
             return JsonConvert.DeserializeObject<User>(response.Content);
         }
+
+
+        public async Task<string> GetByUser(string username,string password)
+        {
+            var client = new RestClient(new Uri("http://localhost:50987/" + User));
+            var request = new RestRequest("GetByUser", Method.GET);
+            request.AddHeader("Accept", "application/json");
+
+            var jsonObject = JsonConvert.SerializeObject(String);
+            request.AddParameter("application/json", jsonObject, ParameterType.RequestBody);
+
+            var taskCompletion = new TaskCompletionSource<IRestResponse>();
+
+            var handle = client.ExecuteAsync(request, r => taskCompletion.SetResult(r));
+
+            var response = (RestResponse)(await taskCompletion.Task);
+
+            return JsonConvert.DeserializeObject<string>(response.Content);
+
+
+
+
+
+
+        }
+        
+
+
+
+
+
 
 
     }
