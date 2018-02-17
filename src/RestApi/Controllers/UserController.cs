@@ -47,7 +47,8 @@ namespace RestApi.Controllers
             {
                 return Ok();
             }
-            return NotFound();
+            return ();
+           
         }
 
         // POST api/values

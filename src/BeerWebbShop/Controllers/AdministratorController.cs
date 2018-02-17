@@ -50,7 +50,9 @@ namespace BeerWebbShop.Controllers
                 return View("UserPage");
             }
 
-            return RedirectToAction("Login","Home");
+            //ViewBag.Message = TempData["ErrorMessage"] = "Wrong Username or Password, Please try again!";
+            return RedirectToAction("Login", "Home");
+
         }
 
         public IActionResult ChangePassword()
@@ -63,7 +65,7 @@ namespace BeerWebbShop.Controllers
         {
             var result = restService.CreateUser(user).Result;
 
-            if (user != null)
+            if (result != null)
             {
                 return View(result);
             }
