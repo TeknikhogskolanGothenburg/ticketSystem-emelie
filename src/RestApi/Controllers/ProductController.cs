@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using RestApi.Model;
+using RestApi.Model.DTO;
+using RestApi.Model.Mapper;
 using RestApi.Repository;
 
 
@@ -33,11 +35,22 @@ namespace RestApi.Controllers
         }
 
         // POST api/values
-        [HttpPost]
-        public IActionResult Post([FromBody] Product product)
+        [HttpPost("AddProduct")]
+        public IActionResult AddProduct([FromBody] ProductDto product)
         {
+            try
+            {
+                var productMapper = new Mapper();
+                var mappedProduct = productMapper.ProductMap(product);
 
-            _productRepository.CreateProduct(product);
+                _productRepository.CreateProduct(mappedProduct);
+            }
+            catch (System.Exception e)
+            {
+
+                return BadRequest("Something whent wrong, please contact Funny Beer");
+            }
+          
 
             return Ok();
         }

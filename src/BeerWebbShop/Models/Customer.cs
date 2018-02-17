@@ -6,7 +6,7 @@ namespace BeerWebbShop.Models
     public class Customer
     {
 
-        //[StringLength(20, ErrorMessage = "Name must be shorter than 20 character")]
+        [StringLength(20, ErrorMessage = "Name must be shorter than 20 character")]
         [Required]
         public string FirstName { get; set; }
 

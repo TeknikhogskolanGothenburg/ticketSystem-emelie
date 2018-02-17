@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestApi.Service", "RestApi.Service\RestApi.Service.csproj", "{9CA5AA1F-B3F3-4692-805F-AFAD60EFD762}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestApi.Host", "RestApi\RestApi.Host.csproj", "{FBB3E759-8241-4A10-B61D-C058E840F0E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RESTAPI", "RestApi\RESTAPI.csproj", "{FBB3E759-8241-4A10-B61D-C058E840F0E5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestApi.Repository", "RestApi.Repository\RestApi.Repository.csproj", "{85EAACA7-B72E-4B00-8CB0-CF96DC465236}"
 EndProject
@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestApi.Model", "RestApi.Mo
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{DE70EC70-8455-45C1-9770-7F4C364F6A4D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestApi.IntegrationsTest", "RestApi.IntegrationsTest\RestApi.IntegrationsTest.csproj", "{DE293E53-8647-4AAF-A440-5434B0DF13A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestApi.IntegrationsTest", "RestApi.IntegrationsTest\RestApi.IntegrationsTest.csproj", "{DE293E53-8647-4AAF-A440-5434B0DF13A6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

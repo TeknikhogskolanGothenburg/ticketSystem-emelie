@@ -5,67 +5,54 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Net.Http;
 using Newtonsoft.Json;
+using RestSharp;
 
 namespace BeerWebbShop.Services
 {
     public class RestService
     {
-        private const string Addcustomer = "api/Customer/";
+        private const string Customer = "api/Customer";
 
-        private const string GetProduct = "api/Product/";
+        private const string Product = "api/Product";
 
-        private const string ValidateUser = "api/User/";
-
-        private const string GetProductById = "api/User";
-
-        private const string CustomerOrder = "api/Customer";
+        private const string User = "api/User";
 
 
+        public async Task<Product> AddProduct(Product product)
+        {
+            var client = new RestClient(new Uri("http://localhost:50987/" + Product));
+            var request = new RestRequest("AddProduct", Method.POST);
+            request.AddHeader("Accept", "application/json");
 
-        //public async Task<HttpResponseMessage> AddCustomerCall(Customer customer)
-        //{
-        //    using (var client = new HttpClient())
-        //    {
-        //        var dataAsString = JsonConvert.SerializeObject(customer);
-        //        var content = new StringContent(dataAsString);
-        //        var result = await client.PostAsync(new Uri("http://localhost:58585/" + Addcustomer), content);
+            var jsonObject = JsonConvert.SerializeObject(product);
+            request.AddParameter("application/json", jsonObject, ParameterType.RequestBody);
+            
+            var taskCompletion = new TaskCompletionSource<IRestResponse>();
 
-        //        if (result.IsSuccessStatusCode)
-        //        {
-        //            return result;
-        //        }
+            var handle = client.ExecuteAsync(request, r => taskCompletion.SetResult(r));
 
-        //        return null;
-        //    }
-        //}
+            var response = (RestResponse)(await taskCompletion.Task);
 
+            return JsonConvert.DeserializeObject<Product>(response.Content);
+        }
 
+        public async Task<User> CreateUser(User user)
+        {
+            var client = new RestClient(new Uri("http://localhost:50987/" + User));
+            var request = new RestRequest("CreateUser", Method.POST);
+            request.AddHeader("Accept", "application/json");
 
-        //public async Task<HttpResponseMessage> ValidateUserCall(string username, string password)
-        //{
+            var jsonObject = JsonConvert.SerializeObject(user);
+            request.AddParameter("application/json", jsonObject, ParameterType.RequestBody);
 
-        //    using (var client = new HttpClient())
-        //    {
+            var taskCompletion = new TaskCompletionSource<IRestResponse>();
 
-        //        var result = await client.PostAsync(new Uri("http://localhost:58585/" + ValidateUser), /*content*/);
+            var handle = client.ExecuteAsync(request, r => taskCompletion.SetResult(r));
 
-        //        if (result.IsSuccessStatusCode)
-        //        {
-        //            return result;
-        //        }
+            var response = (RestResponse)(await taskCompletion.Task);
 
-        //        return null;
-        //    }
-        //}
-
-
-
-
-
-
-
-
-
+            return JsonConvert.DeserializeObject<User>(response.Content);
+        }
 
 
     }

@@ -11,9 +11,10 @@ using System;
 namespace RestApi.Host.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    partial class DataBaseContextModelSnapshot : ModelSnapshot
+    [Migration("20180217133631_dbv3")]
+    partial class dbv3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -69,7 +70,7 @@ namespace RestApi.Host.Migrations
 
                     b.Property<string>("ImageName");
 
-                    b.Property<int?>("OrderId");
+                    b.Property<int>("OrderId");
 
                     b.Property<int>("Price");
 
@@ -118,7 +119,8 @@ namespace RestApi.Host.Migrations
                 {
                     b.HasOne("RestApi.Model.Order")
                         .WithMany("Products")
-                        .HasForeignKey("OrderId");
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }
