@@ -12,24 +12,34 @@ namespace BeerWebbShop.Services
     {
         private const string Addcustomer = "api/Customer/";
 
+        private const string GetProduct = "api/Product/";
+
         private const string ValidateUser = "api/User/";
 
-        public async Task<HttpResponseMessage> AddCustomerCall(Customer customer)
-        {
-            using (var client = new HttpClient())
-            {
-                var dataAsString = JsonConvert.SerializeObject(customer);
-                var content = new StringContent(dataAsString);
-                var result = await client.PostAsync(new Uri("http://localhost:58585/" + Addcustomer), content);
+        private const string GetProductById = "api/User";
 
-                if(result.IsSuccessStatusCode)
-                {
-                    return result;
-                }
+        private const string CustomerOrder = "api/Customer";
 
-                return null;
-            }
-        }
+
+
+        //public async Task<HttpResponseMessage> AddCustomerCall(Customer customer)
+        //{
+        //    using (var client = new HttpClient())
+        //    {
+        //        var dataAsString = JsonConvert.SerializeObject(customer);
+        //        var content = new StringContent(dataAsString);
+        //        var result = await client.PostAsync(new Uri("http://localhost:58585/" + Addcustomer), content);
+
+        //        if (result.IsSuccessStatusCode)
+        //        {
+        //            return result;
+        //        }
+
+        //        return null;
+        //    }
+        //}
+
+
 
         //public async Task<HttpResponseMessage> ValidateUserCall(string username, string password)
         //{
@@ -47,6 +57,15 @@ namespace BeerWebbShop.Services
         //        return null;
         //    }
         //}
+
+
+
+
+
+
+
+
+
 
 
     }
