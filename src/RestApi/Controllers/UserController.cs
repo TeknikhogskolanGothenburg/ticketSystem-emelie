@@ -36,10 +36,8 @@ namespace RestApi.Controllers
         }
 
         [HttpPost("ValidateUser")]
-        public IActionResult ValidateUser([FromBody] UserDto user)
+        public IActionResult ValidateUser([FromBody] User user)
         {
-            var userMapper = new Mapper();
-            var mappedUser = userMapper.UserMap(user);
 
             var result = _userRepository.GetByUsernameAndPassword(user.UserName, user.PassWord);
 
@@ -47,7 +45,7 @@ namespace RestApi.Controllers
             {
                 return Ok();
             }
-            return ();
+            return NotFound();
            
         }
 

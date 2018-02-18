@@ -50,7 +50,7 @@ namespace BeerWebbShop.Controllers
                 return View("UserPage");
             }
 
-            //ViewBag.Message = TempData["ErrorMessage"] = "Wrong Username or Password, Please try again!";
+            ViewBag.Message = TempData["ErrorMessage"] = "Wrong Username or Password, Please try again!";
             return RedirectToAction("Login", "Home");
 
         }

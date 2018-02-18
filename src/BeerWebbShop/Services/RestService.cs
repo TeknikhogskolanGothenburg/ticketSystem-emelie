@@ -12,11 +12,11 @@ namespace BeerWebbShop.Services
 {
     public class RestService
     {
-        private const string Customer = "api/Customer";
+        private const string Customer = "api/customer";
 
-        private const string Product = "api/Product";
+        private const string Product = "api/product";
 
-        private const string User = "api/User";
+        private const string User = "api/user";
 
         
 
@@ -79,6 +79,22 @@ namespace BeerWebbShop.Services
 
         }
         
+
+        public async Task<List<Product>> GetAllProducts()
+        {
+            var client = new RestClient(new Uri("http://localhost:50987/" + Product));
+            var request = new RestRequest("GetAllProducts", Method.GET);
+            request.AddHeader("Accept", "application/json");
+            
+            var taskCompletion = new TaskCompletionSource<IRestResponse>();
+
+            var handle = client.ExecuteAsync(request, r => taskCompletion.SetResult(r));
+
+            var response = (RestResponse)(await taskCompletion.Task);
+            
+            return JsonConvert.DeserializeObject<List<Product>>(response.Content); 
+
+        }
 
 
 

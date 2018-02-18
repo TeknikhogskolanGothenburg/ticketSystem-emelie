@@ -11,5 +11,6 @@ namespace RestApi.Repository
         void DeleteProduct(Product product);
         Product GetProductById(int id);
         List<Product> GetAllProducts();
+       
     }
 }

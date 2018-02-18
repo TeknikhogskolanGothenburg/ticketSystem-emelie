@@ -1,43 +1,54 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using BeerWebbShop.Models;
-
+using BeerWebbShop.Services;
 
 namespace BeerWebbShop.Controllers
 {
     public class HomeController : Controller
     {
+        RestService restService = new RestService();
+        public static List<Product> cartList = new List<Product>();
+        public static List<Product> beerList = new List<Product>();
+        public static List<Product> confirmedBeer = new List<Product>();
+
         public IActionResult Index()
         {
             return View();
         }
-
-        public IActionResult Beer()
+     
+        public IActionResult Beer(Product product)
         {
-            List<Product> product = new List<Product>();
-
-            for (int i = 10; i < 30; i++)
+            if(product != null)
             {
-                product.Add(new Product {ProductName = "Sour Beer" , Price = 32 , Description = "Sour beer with taste of lemon,strawberry and melon", ImageName="beer8.jpg"});
+                cartList.Add(product);
             }
-            return View(product);
+
+            if(beerList.Count <= 0)
+            {
+                beerList = restService.GetAllProducts().Result;
+            }
+
+            if (beerList != null)
+            {
+                return View(beerList);
+            }
+            return View();
+            
         }
 
+        
         public IActionResult Contact()
         {
-          
-
             return View();
         }
 
         public IActionResult Cart()
         {
 
-            return View();
+            return View(cartList);
         }
 
         public IActionResult Login()
@@ -46,9 +57,13 @@ namespace BeerWebbShop.Controllers
             return View();
         }
 
-        public IActionResult ConfirmOrder()
+        public IActionResult ConfirmOrder(List<Product> productsConfirmed)
         {
-
+            if(productsConfirmed != null)
+            {
+                confirmedBeer = productsConfirmed;
+            }
+            
             return View();
         }
 

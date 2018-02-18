@@ -18,14 +18,15 @@ namespace RestApi.Controllers
         {
             _productRepository = productRepository;
         }
-        
+
         // GET api/values
-        [HttpGet]
-        public List<Product> Get()
+        [HttpGet("GetAllProducts")]
+        public List<Product> GetAllProducts()
         {
             return _productRepository.GetAllProducts();
-           
         }
+
+
 
         // GET api/values/5
         [HttpGet("{id}")]

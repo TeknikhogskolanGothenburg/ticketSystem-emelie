@@ -1,8 +1,81 @@
-﻿@model BeerWebbShop.Models.Product
+﻿@model IEnumerable<BeerWebbShop.Models.Product>
 
-@using (Html.BeginForm("ConfirmOrder", "Home", FormMethod.Post))
-{
-    <button type="button">Remove product</button>
 
-    <button type="submit">Confirm order </button>
-}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ImageName)
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<br><br>
+<legend>
+    Enter all your details to complete your order!
+</legend>
+
+<fieldset>
+    <label for="FirstName">Firstname</label> <br>
+    <input type="text" name="FirstName"> <br><br>
+
+    <label for="LastName">Lastname</label> <br>
+    <input type="text" name="lastName"><br><br>
+
+    <label for="Adress">Address</label> <br>
+    <input type="text" name="Adress"> <br><br>
+
+    <label for="ZipCode">Zipcode</label> <br>
+    <input type="text" name="ZipCode"> <br><br>
+
+    <label for="City">City</label> <br>
+    <input type="text" name="City"><br><br>
+
+    <label for="Country">Country</label> <br>
+    <input type="text" name="Country"><br><br>
+
+    <label for="Email">Email</label> <br>
+    <input type="email" name="Email"> <br><br>
+</fieldset>
+
+@Html.ActionLink("Confirm", "ConfirmOrder", new { Model }, new { @class = "btn btn-success" })
+
