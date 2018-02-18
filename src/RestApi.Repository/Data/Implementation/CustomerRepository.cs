@@ -10,10 +10,12 @@ namespace RestApi.Repository
 
         public CustomerRepository(DataBaseContext context) => _context = context;
 
-        public void CreateCustomer(Customer customer)
+        public Customer CreateCustomer(Customer customer)
         {
             _context.Customers.Add(customer);
             _context.SaveChanges();
+
+            return _context.Customers.OrderBy(x => x.Id).FirstOrDefault();
         }
 
         public void UpdateCustomer(Customer customer) => _context.Customers.Update(customer);
@@ -25,5 +27,7 @@ namespace RestApi.Repository
         public Customer GetCustomerByEmail(string Email) => _context.Customers.FirstOrDefault(c => c.Email == Email);
 
         public List<Customer> GetAllCustomers() => _context.Customers.OrderBy(c => c.FirstName).ToList();
+
+        public Customer CheckIfCustomerExist(Customer customer) => _context.Customers.Where(x => x.FirstName == customer.FirstName && x.LastName == customer.LastName && x.Address == customer.Address).FirstOrDefault();
     }
 }

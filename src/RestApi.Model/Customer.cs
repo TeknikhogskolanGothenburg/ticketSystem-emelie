@@ -6,7 +6,6 @@ namespace RestApi.Model
 
     public class Customer
     {
-        [Newtonsoft.Json.JsonIgnore]
         public int Id { get; set; }
 
         public string FirstName { get; set; }

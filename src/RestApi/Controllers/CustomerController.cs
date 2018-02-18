@@ -25,6 +25,13 @@ namespace RestApi.Controllers
            
         }
 
+        [HttpPost("CreateCustomer")]
+        public Customer CreateCustomer(Customer customer)
+        {
+            return _customerRepository.CreateCustomer(customer);
+
+        }
+
         // GET api/values/5
         [HttpGet("{id}")]
         public Customer Get(int id)
@@ -33,13 +40,17 @@ namespace RestApi.Controllers
         }
 
         // POST api/values
-        [HttpPost]
-        public IActionResult Post([FromBody] Customer customer)
+        [HttpPost("CheckIfCustomerExist")]
+        public Customer CheckIfUserExist([FromBody] Customer customer)
         {
-         
-            _customerRepository.CreateCustomer(customer);
+            var result = _customerRepository.CheckIfCustomerExist(customer);
 
-            return Ok();
+            if (result != null)
+            {
+                return result;
+            }
+            return null;
+
         }
 
         // PUT api/values/5

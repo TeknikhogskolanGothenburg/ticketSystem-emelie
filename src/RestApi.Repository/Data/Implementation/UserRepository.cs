@@ -24,10 +24,7 @@ namespace RestApi.Repository
 
         public List<User> GetAllUser() => _context.Users.OrderBy(u => u.FirstName).ToList();
 
-        public User GetByUsernameAndPassword(string username, string password)
-        {
-            return _context.Users.Where(u => u.UserName == username && u.PassWord == password).FirstOrDefault();
-        }
+        public User GetByUsernameAndPassword(string username, string password) => _context.Users.Where(u => u.UserName == username && u.PassWord == password).FirstOrDefault();
 
         public User GetUserByEmail(string Email) => _context.Users.FirstOrDefault(u => u.Email == Email);
        
@@ -36,6 +33,9 @@ namespace RestApi.Repository
 
 
         public void UpdateUser(User user) => _context.Users.Update(user);
+
+
+
 
     }
 }

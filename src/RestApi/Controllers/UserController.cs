@@ -35,6 +35,7 @@ namespace RestApi.Controllers
             return _userRepository.GetUserById(id);
         }
 
+
         [HttpPost("ValidateUser")]
         public IActionResult ValidateUser([FromBody] User user)
         {

@@ -10,10 +10,11 @@ namespace BeerWebbShop.Controllers
     public class HomeController : Controller
     {
         RestService restService = new RestService();
+        MailService mailService = new MailService();
+
         public static List<Product> cartList = new List<Product>();
         public static List<Product> beerList = new List<Product>();
-        public static List<Product> confirmedBeer = new List<Product>();
-
+        
         public IActionResult Index()
         {
             return View();
@@ -48,7 +49,7 @@ namespace BeerWebbShop.Controllers
         public IActionResult Cart()
         {
 
-            return View(cartList);
+            return View(new CustomerProductWrapper { products = cartList });
         }
 
         public IActionResult Login()
@@ -57,13 +58,37 @@ namespace BeerWebbShop.Controllers
             return View();
         }
 
-        public IActionResult ConfirmOrder(List<Product> productsConfirmed)
+        public  IActionResult ConfirmOrder(Customer customer)
         {
-            if(productsConfirmed != null)
+            var order = new Order();
+            var oldCustomer = restService.CheckIfCustomerExist(customer);
+
+            if(oldCustomer != null)
             {
-                confirmedBeer = productsConfirmed;
+
+                order.Products = cartList;
+                order.OrderDate = DateTime.Now;
+                order.CustomerId = oldCustomer.Id;
+               
+               // skicka mail.
+            }
+            else
+            {
+                var newCustomer = restService.CreateCustomer(customer);
+
+                order.Products = cartList;
+                order.OrderDate = DateTime.Now;
+                order.CustomerId = newCustomer.Id;
             }
             
+            var orderResult = restService.CreateOrder(order);
+
+            //skapa ett nytt order obejct lägg på produkterna 
+            //Skicka mail till kunden i fråga.
+
+            //retunera nått trevligt till användaren att prokdukterna kommer snart, och att de får ett mail på sin order
+
+
             return View();
         }
 
