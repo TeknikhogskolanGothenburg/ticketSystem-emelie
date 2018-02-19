@@ -8,5 +8,5 @@
 
 
 * As a customer, I want to buy products from the website
-* As a customer, I want to Remove a product
+* As a customer, I want to have the option to remove a product from the shopping cart
 * As a customer, I want to confirm order
