@@ -4,8 +4,9 @@
 <div class="row">
     @foreach (var product in Model)
     {
+       
         <div class="card" style="width: 18rem;">
-            @*<img class="card-img-top" src="@product.ImageUrl" alt="Card image alt">*@
+            <img class="card-img-top" src="@product.ImageUrl" alt="Card image alt">
             <div class="card-body">
                 <h5 class="card-title">@product.ProductName</h5>
                 <p class="card-text">@product.Description</p>
@@ -13,7 +14,6 @@
                 @Html.ActionLink("Add to cart", "Beer", product, new { @class = "btn btn-success" })
             </div>
         </div>
-        
     }
 </div>
 
