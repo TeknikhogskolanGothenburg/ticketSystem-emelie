@@ -12,17 +12,17 @@ namespace BeerWebbShop.Services
                 SmtpClient SmtpServer = new SmtpClient("smtp.live.com");
                 var mail = new MailMessage
                 {
-                    From = new MailAddress("teamemaemesof@outlook.com")
+                    From = new MailAddress("emelie2018@hotmail.com")
                 };
 
 
                 mail.To.Add(email);
-                mail.Subject = "Tic tac toe";
-                mail.Body = "Hello " + nickName + " it's your turn";
+                mail.Subject = "Funny Beer";
+                mail.Body = "Your order has been confirmd";
                 SmtpServer.Port = 587;
 
                 SmtpServer.UseDefaultCredentials = false;
-                SmtpServer.Credentials = new System.Net.NetworkCredential("teamemaemesof@outlook.com", "losenord123");
+                SmtpServer.Credentials = new System.Net.NetworkCredential("emelie2018", "emelie1234");
                 SmtpServer.EnableSsl = true;
                 SmtpServer.Send(mail);
             }
