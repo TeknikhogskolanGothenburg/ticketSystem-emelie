@@ -9,7 +9,7 @@
 
 # Container diagram
 
-<img src="images/container.png" />
+<img src="images/Webbshop.png" />
 
 # Database
 
