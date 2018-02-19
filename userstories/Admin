@@ -1,0 +1,13 @@
+
+Admin
+
+As an admin, I would like to log in to my website
+
+Admin should be able to add new products to the website
+
+Admin should be able to add new users
+
+Admin should be able to change password
+
+Admin should be able to search for an order with Email,firstname or lastname
+
