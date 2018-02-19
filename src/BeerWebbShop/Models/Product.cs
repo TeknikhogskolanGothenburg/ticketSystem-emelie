@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace BeerWebbShop.Models
 {
@@ -21,14 +22,17 @@ namespace BeerWebbShop.Models
         [System.Runtime.Serialization.DataMember]
         public string ImageName { get; set; }
 
-        //public string ImageUrl
-        //{
-        //    get
-        //    {
-        //        return "/images/Product/" + ImageName;
-        //    }
+        public virtual ICollection<Order> Orders { get; set; }
 
-        //}
+
+        public string ImageUrl
+        {
+            get
+            {
+                return "/images/Product/" + ImageName;
+            }
+
+        }
 
 
     }

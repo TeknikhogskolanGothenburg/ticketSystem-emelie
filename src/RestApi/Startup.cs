@@ -29,8 +29,7 @@ namespace RestApi.Host
             services.AddMvc();
         }
 
-        // Dependency injection behövs samt fixa allt i controllen??????????????
-
+        
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {

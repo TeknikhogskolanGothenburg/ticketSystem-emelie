@@ -22,7 +22,7 @@ namespace BeerWebbShop.Controllers
             {
                 try
                 {
-                    var result = restService.AddProduct(product).Result;
+                    var result = restService.CreateProduct(product).Result;
                     if (product != null)
                     {
                         return View(result);

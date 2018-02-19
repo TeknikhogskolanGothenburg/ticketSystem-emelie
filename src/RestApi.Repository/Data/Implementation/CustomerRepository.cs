@@ -15,14 +15,14 @@ namespace RestApi.Repository
             _context.Customers.Add(customer);
             _context.SaveChanges();
 
-            return _context.Customers.OrderBy(x => x.Id).FirstOrDefault();
+            return _context.Customers.OrderBy(x => x.CustomerId).FirstOrDefault();
         }
 
         public void UpdateCustomer(Customer customer) => _context.Customers.Update(customer);
 
         public void DeleteCustomer(Customer customer) => _context.Customers.Remove(customer);
 
-        public Customer GetCustomerById(int id) => _context.Customers.FirstOrDefault(c => c.Id == id);
+        public Customer GetCustomerById(int id) => _context.Customers.FirstOrDefault(c => c.CustomerId == id);
 
         public Customer GetCustomerByEmail(string Email) => _context.Customers.FirstOrDefault(c => c.Email == Email);
 

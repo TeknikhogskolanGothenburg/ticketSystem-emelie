@@ -22,7 +22,7 @@ namespace BeerWebbShop.Controllers
      
         public IActionResult Beer(Product product)
         {
-            if(product != null)
+            if(product.Id != 0)
             {
                 cartList.Add(product);
             }
@@ -61,27 +61,31 @@ namespace BeerWebbShop.Controllers
         public  IActionResult ConfirmOrder(Customer customer)
         {
             var order = new Order();
-            var oldCustomer = restService.CheckIfCustomerExist(customer);
+            var oldCustomer = restService.CheckIfCustomerExist(customer).Result;
 
             if(oldCustomer != null)
             {
 
                 order.Products = cartList;
                 order.OrderDate = DateTime.Now;
-                order.CustomerId = oldCustomer.Id;
-               
-               // skicka mail.
+                order.CustomerId = oldCustomer.CustomerId;
+
+                // skicka mail 
+                mailService.SendEmail("", "");
             }
             else
             {
-                var newCustomer = restService.CreateCustomer(customer);
+                var newCustomer = restService.CreateCustomer(customer).Result;
 
                 order.Products = cartList;
                 order.OrderDate = DateTime.Now;
-                order.CustomerId = newCustomer.Id;
+                order.CustomerId = newCustomer.CustomerId;
             }
             
             var orderResult = restService.CreateOrder(order);
+
+            
+
 
             //skapa ett nytt order obejct lägg på produkterna 
             //Skicka mail till kunden i fråga.

@@ -11,9 +11,10 @@ using System;
 namespace RestApi.Host.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    partial class DataBaseContextModelSnapshot : ModelSnapshot
+    [Migration("20180218205044_dbv5")]
+    partial class dbv5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -22,7 +23,7 @@ namespace RestApi.Host.Migrations
 
             modelBuilder.Entity("RestApi.Model.Customer", b =>
                 {
-                    b.Property<int>("CustomerId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Address");
@@ -39,7 +40,7 @@ namespace RestApi.Host.Migrations
 
                     b.Property<int>("ZipCode");
 
-                    b.HasKey("CustomerId");
+                    b.HasKey("Id");
 
                     b.ToTable("Customers");
                 });
@@ -55,6 +56,8 @@ namespace RestApi.Host.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CustomerId");
+
                     b.ToTable("Orders");
                 });
 
@@ -67,11 +70,15 @@ namespace RestApi.Host.Migrations
 
                     b.Property<string>("ImageName");
 
+                    b.Property<int?>("OrderId");
+
                     b.Property<int>("Price");
 
                     b.Property<string>("ProductName");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
 
                     b.ToTable("Products");
                 });
@@ -94,6 +101,21 @@ namespace RestApi.Host.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("RestApi.Model.Order", b =>
+                {
+                    b.HasOne("RestApi.Model.Customer")
+                        .WithMany("Orders")
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("RestApi.Model.Product", b =>
+                {
+                    b.HasOne("RestApi.Model.Order")
+                        .WithMany("Products")
+                        .HasForeignKey("OrderId");
                 });
 #pragma warning restore 612, 618
         }

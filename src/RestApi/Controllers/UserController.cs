@@ -2,8 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using RestApi.Model;
-using RestApi.Model.DTO;
-using RestApi.Model.Mapper;
 using RestApi.Repository;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -52,13 +50,10 @@ namespace RestApi.Controllers
 
         // POST api/values
         [HttpPost("CreateUser")]
-        public IActionResult CreateUser([FromBody] UserDto user)
+        public IActionResult CreateUser([FromBody] User user)
         {
             
-             var userMapper = new Mapper();
-             var mappedUser = userMapper.UserMap(user);
-
-             _userRepository.CreateUser(mappedUser);
+             _userRepository.CreateUser(user);
 
             return Ok();
         }

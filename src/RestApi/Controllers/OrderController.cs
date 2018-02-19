@@ -36,10 +36,9 @@ namespace RestApi.Controllers
         }
 
         // POST api/values
-        [HttpPost]
-        public IActionResult Post([FromBody] Order order)
+        [HttpPost("CreateOrder")]
+        public IActionResult CreateOrder([FromBody] Order order)
         {
-
             _orderRepository.CreateOrder(order);
 
             return Ok();
@@ -62,3 +61,4 @@ namespace RestApi.Controllers
 
     }
 }
+

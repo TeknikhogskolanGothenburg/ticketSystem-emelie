@@ -22,10 +22,10 @@ namespace BeerWebbShop.Services
         
         
 
-        public async Task<Product> AddProduct(Product product)
+        public async Task<Product> CreateProduct(Product product)
         {
             var client = new RestClient(new Uri("http://localhost:50987/" + Product));
-            var request = new RestRequest("AddProduct", Method.POST);
+            var request = new RestRequest("CreateProduct", Method.POST);
             request.AddHeader("Accept", "application/json");
 
             var jsonObject = JsonConvert.SerializeObject(product);
@@ -117,7 +117,7 @@ namespace BeerWebbShop.Services
         public async Task<Customer> CreateCustomer(Customer customer)
         {
             var client = new RestClient(new Uri("http://localhost:50987/" + Customer));
-            var request = new RestRequest("ValidateUser", Method.POST);
+            var request = new RestRequest("CreateCustomer", Method.POST);
             request.AddHeader("Accept", "application/json");
 
             var jsonObject = JsonConvert.SerializeObject(customer);
